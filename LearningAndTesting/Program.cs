@@ -18,33 +18,39 @@ to display the arrow’s cost.
 
 public class Arrow
 {
+//Fields
+    int shaftLengthLong = 100;
+    int shaftLengthShort = 60;
 
-int shaftLengthLong = 100;
-int shaftLengthShort = 60;
+    int steelArrowHeadCost = 10;
+    int woodArrowHeadCost = 3;
+    int obsidianArrowHeadCost = 5;
 
-int steelArrowHeadCost = 10;
-int woodArrowHeadCost = 3;
-int obsidianArrowHeadCost = 5;
-
-double shaftLengthPricePerCm = 0.05;
+    double shaftLengthPricePerCm = 0.05;
 
 
+    enum ArrowHeadType
+    {
+        steel,
+        wood,
+        obsidian
+    }
 
-enum ArrowHeadType
-{
-    steel,
-    wood,
-    obsidian
-}
+    enum ArrowHeadFletching
+    {
+        plastic,
+        turkeyFeathers,
+        gooseFeathers
+    }
 
-enum ArrowHeadFletching
-{
-    plastic,
-    turkeyFeathers,
-    gooseFeathers
-}
+    ArrowHeadType Head { get;}
+    ArrowHeadType Fletching { get;}
 
-}
+    public Arrow(ArrowHeadType head, ArrowHeadType fletching)
+    {
+        Head = head;
+        Fletching = fletching;
+    }
 
 public class UserInput
 {
@@ -54,9 +60,23 @@ public class UserInput
         // constructor could be left empty?
     }
 
-    public string ()
+    public string arrowTypeSelector()
     {
-        Console.WriteLine("Please select your arrow.");
-        string userSelectedArrow = Console.ReadLine()
+        Console.WriteLine("Please select the type of your arrow head.");
+        Console.WriteLine("Please now select the fletching.");
+        Console.WriteLine("Finally, please select the length.");
+
+        string? userSelectedArrow = Console.ReadLine();
+        return userSelectedArrow;
+
     }
+public class ArrowCostCalculator
+{
+    public ArrowCostCalculator()
+    {
+
+    }
+
+
+}
 }
