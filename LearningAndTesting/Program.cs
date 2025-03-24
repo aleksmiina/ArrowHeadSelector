@@ -1,4 +1,4 @@
-﻿/*
+/*
 Each arrow has three parts: the arrowhead (steel, wood, or obsidian), the shaft (a length between 60 and
 100 cm long), and the fletching (plastic, turkey feathers, or goose feathers).
 
@@ -11,72 +11,58 @@ Objectives:
 
  (Hint: arrowhead types and fletching types might be good enumerations.)
 
-• Allow a user to pick the arrowhead, fletching type, and length and then create a new Arrow instance.
+• Allow a user to pick the arrowhead, fletching type, and length and then create a new Arrow instance. 
+// 
 • Add a GetCost method that returns its cost as a float based on the numbers above, and use this
 to display the arrow’s cost.
 */
 
 public class Arrow
 {
-//Fields
-    int shaftLengthLong = 100;
-    int shaftLengthShort = 60;
 
-    int steelArrowHeadCost = 10;
-    int woodArrowHeadCost = 3;
-    int obsidianArrowHeadCost = 5;
+private int shaftLengthLong = 100;
+private int shaftLengthShort = 60;
 
-    double shaftLengthPricePerCm = 0.05;
+private int steelArrowHeadCost = 10;
+private int woodArrowHeadCost = 3;
+private int obsidianArrowHeadCost = 5;
+
+private double shaftLengthPricePerCm = 0.05;
+
+private ArrowHeadType arrowHeadType; //oddly enough I am declaring an enum field here
+private ArrowHeadFletching arrowHeadFletching; // the same here
 
 
-    enum ArrowHeadType
-    {
-        steel,
-        wood,
-        obsidian
-    }
 
-    enum ArrowHeadFletching
-    {
-        plastic,
-        turkeyFeathers,
-        gooseFeathers
-    }
+public enum ArrowHeadType {steel, wood, obsidian} 
 
-    ArrowHeadType Head { get;}
-    ArrowHeadType Fletching { get;}
+public enum ArrowHeadFletching {plastic, turkeyFeathers, gooseFeathers}
 
-    public Arrow(ArrowHeadType head, ArrowHeadType fletching)
-    {
-        Head = head;
-        Fletching = fletching;
-    }
-
-public class UserInput
+public Arrow (int shaftLengthLong, int shaftLengthShort, ArrowHeadType arrowHeadType, ArrowHeadFletching arrowHeadFletching)
 {
-    string userSelectedArrow;
+    this.shaftLengthLong = shaftLengthLong;
+    this.shaftLengthShort = shaftLengthShort;
+    this.arrowHeadType = arrowHeadType;
+    this.arrowHeadFletching = arrowHeadFletching;
+}
+}
+
+public class UserInput //I forgot how to create an instance of a class, in this case of an Arrow class. 
+{
+    string userSelectedArrowHead;
+    string userSelectedFletching;
+    string userSelectedLength;
+
     public UserInput()
     {
         // constructor could be left empty?
     }
 
-    public string arrowTypeSelector()
+    public string () // looks like here I was going to ask a user to select an arrow type
     {
-        Console.WriteLine("Please select the type of your arrow head.");
-        Console.WriteLine("Please now select the fletching.");
-        Console.WriteLine("Finally, please select the length.");
-
-        string? userSelectedArrow = Console.ReadLine();
-        return userSelectedArrow;
-
+        Console.WriteLine("Please select your arrow head type from the following options: steel, wood, obsidian.");
+        Console.WriteLine("Please select your arrow head fletching from the following options: plastic, turkey feathers, goose feathers.");
+        Console.WriteLine("Please select the length of your arrow. It could be either 60 cm or 100 cm.");
+        string userSelectedArrow = Console.ReadLine()
     }
-public class ArrowCostCalculator
-{
-    public ArrowCostCalculator()
-    {
-
-    }
-
-
-}
 }
